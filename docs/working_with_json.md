@@ -69,4 +69,6 @@ Value substitution via placeholders is supported. Two placeholders are currently
 For example, if you wanted `foo_string` to contain the tile output value, your template would look like this: `{"foo_data": {"foo_string": "<<value>>", "foo_int": 20}}`.
 
 ## Compound tiles
-This section TBW.
+
+:   !!! todo
+        This section of the documentation is still to be written. Want to help out? Head over to the [contributions](contributing.md) page.
