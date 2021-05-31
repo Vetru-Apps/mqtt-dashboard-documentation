@@ -12,12 +12,12 @@ With every update new phrases are introduced, so there is always work to be done
 - **Enhance the documentation**  
 When you become an expert in using the app, chances are you will note some shortages in this documentation. We encourage you to submit a pull request to the documentation repository when you feel you have something to add that could benefit others!
 
-[Open repository](){ .md-button }
+[Open repository](https://github.com/Vetru-Apps/mqtt-dashboard-documentation){ .md-button }
 
 ## Testing the documentation
 
 If you want to edit and test the documentation prior to committing, there are a few easy steps to get you started.  
-Below are the main staps outlines, but feel free to follow the [MkDocs documentation](https://www.mkdocs.org/#installation) or [Material for MkDocs)[https://squidfunk.github.io/mkdocs-material/getting-started/].
+Below are outlined the main steps, but feel free to follow the [MkDocs documentation](https://www.mkdocs.org/#installation) or [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/).
 
 - Install Python 3+. Python 2.7 will not work.
 - Install `pip`:
