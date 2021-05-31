@@ -3,7 +3,10 @@ site_dir: _site
 
 # GitHub and editing button
 repo_url: https://github.com/Vetru-Apps/mqtt-dashboard-documentation
-edit_uri: "https://github.com/Vetru-Apps/mqtt-dashboard-documentation"
+
+google_analytics:
+  - UA-98707628-3
+  - auto
 
 nav:
 - The app: 'index.md'
