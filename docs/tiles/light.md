@@ -1,4 +1,8 @@
 # Light
+
+:   !!! bug "Compatibility"
+        Due to radical changes in the tile's behavior and data structure, new light tiles are not compatible with their old implementation. We are sorry for any inconvenience!
+
 The *Light* tile can manage appliances whose status can be on, off or dimmed, with a brightness level between 0 and 100. 
 
 For both input and output purposes, the tile assumes the following conventions:
@@ -19,4 +23,4 @@ Refer to the *tunables* section of the [tiles page](../tiles.md) for the list of
 
 Lights expose moreover the following dedicated tunables:
 
-`none`
+None.

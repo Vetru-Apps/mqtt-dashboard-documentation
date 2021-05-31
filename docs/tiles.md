@@ -7,7 +7,8 @@ Hopefully with the following description we will be able to better convey the di
 
 ## Standard tiles
 
-Etwas
+:   !!! todo
+        This section of the documentation could be enhanced. Want to help out? Head over to the [contributions](contributing.md) page.
 
 ### Settings
 
