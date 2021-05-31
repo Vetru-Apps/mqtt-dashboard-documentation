@@ -1,2 +1,2 @@
-# mqtt-dashboard-documentation
-MkDocs - based coumentation for the MqttDashboard Android app.
+# MqttDashboard documentation website
+MkDocs - based documentation for the MqttDashboard Android app.

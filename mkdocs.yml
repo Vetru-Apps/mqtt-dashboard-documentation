@@ -1,0 +1,70 @@
+site_name: MQTT Dashboard
+site_dir: _site
+
+# GitHub and editing button
+repo_url: https://github.com/Vetru-Apps/mqtt-dashboard-documentation
+edit_uri: "https://github.com/Vetru-Apps/mqtt-dashboard-documentation"
+
+nav:
+- The app: 'index.md'
+- Brokers: 'brokers.md'
+- Tiles:
+  - Tiles: 'tiles.md'
+  - Standard:
+    - 'Button': 'tiles/button.md'
+    - 'Toggle': 'tiles/toggle.md'
+    - 'Multi-selection': 'tiles/multi-selection.md'
+    - 'Text': 'tiles/text.md'
+    - 'Progress': 'tiles/progress.md'
+    - 'Date and time': 'tiles/date-time.md'
+    - 'Color': 'tiles/color.md'
+    - 'Image': 'tiles/image.md'
+    - 'Line chart': 'tiles/line-chart.md'
+  - Compound:
+    - 'Light': 'tiles/light.md'
+    - 'Thermostat': 'tiles/thermostat.md'
+- Features:
+  - 'Working with JSON Objects': 'working_with_json.md'
+  - 'Exporting the database over MQTT': 'export-over-mqtt.md'
+- Contributing: 'contributing.md'
+- Changelog: 'changelog.md'
+- Privacy: 'privacy.md'
+
+theme:
+  name: material
+  logo: images/icon.png
+  favicon: images/favicon.ico
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - tables
+  - toc
+
+extra:
+  social:
+    - icon: fontawesome/brands/reddit
+      link: https://www.reddit.com/r/MqttDashboard/
