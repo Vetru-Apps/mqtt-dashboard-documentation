@@ -12,29 +12,29 @@ We assume you already have a broker set up and running. If this were not the cas
 [4]: https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html
 
 ## Topics
-Topics are, in the MQTT world, similar to news channels. A device might want to subscribe to `rooms\bedroom\temperature` to stay updated on the thermometer readings, while publishing on `rooms\bedroom\fan` to turn on or off a fan when the room is warmer then a certain threshold.
+Topics are, in the MQTT world, similar to news channels. A device might want to subscribe to `rooms/bedroom/temperature` to stay updated on the thermometer readings, while publishing on `rooms/bedroom/fan` to turn on or off a fan when the room is warmer then a certain threshold.
 
-Both `rooms\bedroom\temperature` and `rooms\bedroom\fan` are topics, constructed in a hierarchical structure similar to computer folders; the main level (`room`) contains the children ones, such that an interested user could subscribe to a whole level using wildcards and listen for all messages regarding, for example, the 'channel' `rooms\bedroom`.
+Both `rooms/bedroom/temperature` and `rooms/bedroom/fan` are topics, constructed in a hierarchical structure similar to computer folders; the main level (`room`) contains the children ones, such that an interested user could subscribe to a whole level using wildcards and listen for all messages regarding, for example, the 'channel' `rooms/bedroom`.
 
-Topics are used to 'mark' messages and to facilitate their distribution, in the same way you may sort your documents in a structured folder tree. In this way, clients can ask for only the messages they need, avoiding the need to go through and inspect *all* messages that are exchanged by the broker. The fan from the previous example will only see messages 'labelled' `rooms\bedroom\temperature` and ignore the others, only receiving updates on what it cares the most about.
+Topics are used to 'mark' messages and to facilitate their distribution, in the same way you may sort your documents in a structured folder tree. In this way, clients can ask for only the messages they need, avoiding the need to go through and inspect *all* messages that are exchanged by the broker. The fan from the previous example will only see messages 'labelled' `rooms/bedroom/temperature` and ignore the others, only receiving updates on what it cares the most about.
 
 ### Wildcards
 MQTT foresees two main wildcards - i.e. special characters representing particular behaviors while *subscribing* (not *publishing*). They allow the client to subscribe to a multitude of topics simultaneously without specifying their *exact* name; their operation differ slightly as you will see below.
 
-* `+` - or *single-level* wildcard. It is used to subscribe to all topics matching the pattern, replacing only a level; it must be used *between* two topics separator (`\`). Some examples will clarify the concept.  
-Take the subscription `rooms\+\temperature`; it will cause the following results:
+* `+` - or *single-level* wildcard. It is used to subscribe to all topics matching the pattern, replacing only a level; it must be used *between* two topics separator (`/`). Some examples will clarify the concept.  
+Take the subscription `rooms/+/temperature`; it will cause the following results:
 
-    - [x] `rooms\bedroom\temperature` will match
-    - [x] `rooms\kitchen\temperature` will match
-    - [ ] `rooms\bedroom\temperature\outside` will **not** match
-    - [ ] `home\rooms\bedroom\temperature` will **not** match
+    - [x] `rooms/bedroom/temperature` will match
+    - [x] `rooms/kitchen/temperature` will match
+    - [ ] `rooms/bedroom/temperature/outside` will **not** match
+    - [ ] `home/rooms/bedroom/temperature` will **not** match
 
 * `#`, or *multi-level* wildcard, is employed instead to subscribe to topics matching one or more levels, and must be employed as **last** character of the subscription string. Again, one example will help.  
-Take the subscription `rooms\bedroom\temperature\#`; it will have these results:
+Take the subscription `rooms/bedroom/temperature/#`; it will have these results:
     
-    - [x] `rooms\bedroom\temperature\outside` will match 
-    - [x] `rooms\bedroom\temperature\outside\windows` will match
-    - [ ] `rooms\bedroom\children\temperature\outside` will **not** match
+    - [x] `rooms/bedroom/temperature/outside` will match 
+    - [x] `rooms/bedroom/temperature/outside/windows` will match
+    - [ ] `rooms/bedroom/children/temperature/outside` will **not** match
 
 Additionally, the special character `$` is a wildcard used internally by MQTT brokers; we will not discuss it here, but you can have a look at the great [MQTT guide by HiveMQ](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/).
 
@@ -48,7 +48,7 @@ The app offers you the following options to set up a connection with your broker
 
 - **Name** (required): a user-friendly name identifying the broker to you; since this is not used while connecting to the broker, you can use any string that suits your needs.
 
-- **Address** (required): defines the address of the broker you want to connect to; if not specified, `tcp:\\` will be added at the beginning of the address and used as default protocol. All internet protocols (`tcp:\\`, `ssl:\\`, `ws:\\`, `wss:\\`, `mqtt:\\`, etc) are accepted.
+- **Address** (required): defines the address of the broker you want to connect to; if not specified, `tcp://` will be added at the beginning of the address and used as default protocol. All internet protocols (`tcp://`, `ssl://`, `ws://`, `wss://`, `mqtt://`, etc) are accepted.
 
 - **Port** (required): the MQTT confection port. Remember that different protocols usually use different ports; it is common use to adopt `1883` in plain connections, `8883` for SSL/TLS. The port is either set by you or provided from the service provider at the moment of the creation of the broker instance.
 

@@ -5,6 +5,14 @@ Tiles are in MqttDashboard the core objects that allow users to interact with th
 Standard and compound tiles can coexist as part of the same broker and under the same group. The main difference between the two is the ability of the compound ones to group more than one input and output topics under the same interface.  
 Hopefully with the following description we will be able to better convey the differences of the two.
 
+### Tunables - what are they
+
+We define here *tunables* a set of settings impacting the operations of the tile; these could be related to the visual interface, to the tile's topics, or to how the tile will behave in response to input or outputs. Tunables are as such those settings strictly related to one particular type of tile; standard settings common to all tiles are simply names *settings*.
+
+You can use tunables to tweak and modify how a tile will look or work, limitedly to the options provided.
+
+Usually, *standard* tiles expose their most relevant settings via the *new tile* screen, so you won't have to look for them. On the contrary, *compound tiles* work with a predefined set of rules inferred from the *base topic* you provide during setup; in this case, use the tunables to customize them.
+
 ## Standard tiles
 
 :   !!! todo
@@ -45,7 +53,7 @@ Available placeholder are:
 
 - **UI settings**:
     
-    * **Show as shrtcut**: display the tile as a small, icon-only shortcut at the top of the screen for faster access. 
+    * **Show as shortcut**: display the tile as a small, icon-only shortcut at the top of the screen for faster access. 
     * **Compact layout**: reduces the size of the tile to the minimum height to display its icon and name. Since no content is displayed, you will probably need to click on it to access its data.
 
 :   !!! faq
@@ -63,19 +71,20 @@ The following standard tiles are currently available for you to pick:
 - [Text](tiles/text.md)
 - [Progress](tiles/progress.md)
 - [Date and time](tiles/date-time.md)
+- [Line chart](tiles/line-chart.md)
 - [Color](tiles/color.md)
 - [Image](tiles/image.md)
 
 ## Compound tiles
-Compound tiles are more complex entity that aim to represent a physical device, allowing the user to manage different parameters at the same time and within the same interface. These tiles come with a predefined combination of state/command topics, but you have the possibility to override the settings and customize the behaviour if you want to.
+Compound tiles are more complex entity that aim to represent a physical device, allowing the user to manage different parameters at the same time and within the same interface. These tiles come with a predefined combination of state/command topics, but you have the possibility to override the settings and customize the behavior if you want to.
 
 Compound tiles group two or more *parameters* under the same UI control. As an example, a [thermostat](tiles/thermostat.md) tile provides `termperature`, `mode`, `setpoint` and `humidity` as parameters.  
 Parameters can be either `state` parameters, only providing input, `command` parameters providing an output, or both.  
 
 For each parameter type, MqttDashboard generates a set of topics constructed on the `base topic` specified by the user, which are:
 
-- `<base topic>\<parameter name>\state` for `state` or input parameters
-- `<base topic>\<parameter name>\command` for `command` or output parameters
+- `<base topic>/<parameter name>/state` for `state` or input parameters
+- `<base topic>/<parameter name>/command` for `command` or output parameters
 
 Parameters with both `state` and `output` capabilities will generate two topics each.  
 The `state` topic is used by the app to receive messages, thus is subscribed to; the `command` topic is the one used to publish the parameter upon user interaction.
@@ -90,17 +99,17 @@ Let us first give a list of the properties common to every compound tile. Hang t
 ### Tunables
 Compound tiles come with a common set of tunables related to the parameters they act on. Use the tunables to customize `state` or `command` topics or the way the tile works.
 
-Each compound tile type might have additional tunables than the ones described here, specifically for its opertations. Check out the tile-related page to find out more!
+Each compound tile type might have additional tunables than the ones described here, specifically for its operations. Check out the tile-related page to find out more!
 
 - For each `state` parameter, the available tunables are:
 
-    * `<parameter>_state_topic`
-    * `<parameter>_json_path`
+    * `<parameter>_state_topic`: the state - or input - topic of that parameter. If empty, the default one will be used.
+    * `<parameter>_json_path`: the JsonPath string used to extract the payload from the incoming message. If the path is empty, the message is not a JSON Object or if the specified path is not found, the whole message will be interpreted as payload.
 
 - For each `command` parameter, the available tunables are:
 
-    * `<parameter>_command_topic`
-    * `<parameter>_retain`
+    * `<parameter>_command_topic`: the command - or output - topic for the specified parameter. if empty, the default one will be used.
+    * `<parameter>_retain`: option to flag the outgoing message as retained. Defaults to `false`.
 
 - In addition, for for parameters that provide both `state` and `command` capabilities, the following tunable is available:
 
@@ -113,7 +122,7 @@ The following compound tiles are currently available for you to pick:
 - [Thermostat](tiles/thermostat.md)
 
 ### Example
-Let's consider a [thermostat](tiles/thermostat.md) compound tile, and suppose we set `home\thermostat` as the *base topic*. Thermostats expose to the user four parameters, namely:
+Let's consider a [thermostat](tiles/thermostat.md) compound tile, and suppose we set `home/thermostat` as the *base topic*. Thermostats expose to the user four parameters, namely:
 
 - **Setpoint**: available as `state` and `command` topic. 
 - **Temperature**: available as `state` topic.
@@ -123,16 +132,16 @@ Let's consider a [thermostat](tiles/thermostat.md) compound tile, and suppose we
  MqttDashboard will therefore generate `state` and `command` topics for each parameter following the previously described rule:
 
 - `state`, or input, topics, to which it will subscribe:
-    * `home\thermostat\setpoint\state`
-    * `home\thermostat\temperature\state`
-    * `home\thermostat\humidity\state`
-    * `home\thermostat\mode\state`
+    * `home/thermostat/setpoint/state`
+    * `home/thermostat/temperature/state`
+    * `home/thermostat/humidity/state`
+    * `home/thermostat/mode/state`
 - `command`, or output, topics, to which messages will be published:
-    * `home\thermostat\setpoint\command`
-    * `home\thermostat\mode\command`
+    * `home/thermostat/setpoint/command`
+    * `home/thermostat/mode/command`
 
-Upon user interaction, a message will be published to the respective `command` topic. Let's say the user changed the thermostat's setpoint from `20` to `22`: a message with `22` as payload will be sent to `home\thermostat\setpoint\command`.
+Upon user interaction, a message will be published to the respective `command` topic. Let's say the user changed the thermostat's setpoint from `20` to `22`: a message with `22` as payload will be sent to `home/thermostat/setpoint/command`.
 
-Let's now suppose the user changed the setpoint `command` topic to `home\garage\furnace` by acting on the tile's tunables. The tile still expects inputs from `home\thermostat\setpoint\state` to update its UI, while publishes to `home\garage\furnace`, thus no visual update is given when the user changes the setpoint.  
+Let's now suppose the user changed the setpoint `command` topic to `home/garage/furnace` by acting on the tile's tunables. The tile still expects inputs from `home/thermostat/setpoint/state` to update its UI, while publishes to `home/garage/furnace`, thus no visual update is given when the user changes the setpoint.  
 
-Since `setpoint` provides both `state` and `command` capabilities, the tile also exposes a tunable responsible for immediately updating the value on the state topic. When enabled, the app publishes on `home\garage\furnace` and locally sets the value of `home\thermostat\setpoint\state` to the outgoing value; in this way, the UI stays up-to-date and the user maintains separate input/output topics.
+Since `setpoint` provides both `state` and `command` capabilities, the tile also exposes a tunable responsible for immediately updating the value on the state topic. When enabled, the app publishes on `home/garage/furnace` and locally sets the value of `home/thermostat/setpoint/state` to the outgoing value; in this way, the UI stays up-to-date and the user maintains separate input/output topics.
