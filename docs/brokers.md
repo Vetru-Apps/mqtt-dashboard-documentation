@@ -72,6 +72,14 @@ The app offers you the following options to set up a connection with your broker
 
 - **Use clean session**: if using a persistent session, the broker will keep the information about the current connection, as subscribed topics, pending messages and so on, until the client reconnects; if a clean session is being used and the client disconnects for any reason, all information and messages that are queued will be deleted.
 
+- **KeepAlive interval**: tells the broker how much time is allowed to pass without any message being exchanged. After this time has passed by (allowing some margin) without messages being exchanged, the broker will close the connection.
+
+:   !!! Warning
+        If you experience rare disconnections, it may be due to the keepAlive not being satisfied. The app automatically sends a PING message, but this could be messed up with either by Doze or by some proprietary OEM battery saver feature. To solve this issue you can try to:
+
+        - Whitelist the app (Android Settings > Apps > MqttDashboard > Battery > Do Not Optimize).
+        - Set the KeepAlive interval to 0. This will instruct the broker not to consider an inactive connection a lost one, thus effectively disabling this behavior.
+
 - **Do not connect at startup**: tells the app not to connect to this broker when launched; you will need to manually start the connection from the overflow menu in the main screen (the three-dots icon). Use this option if the broker is rarely used or is not your main one and you do not want multiple connections in the background.
 
 With that being said, you should now be able to set up your first broker and move on to the next task: setting up tiles!
