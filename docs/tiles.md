@@ -55,6 +55,7 @@ Available placeholder are:
     
     * **Show as shortcut**: display the tile as a small, icon-only shortcut at the top of the screen for faster access. 
     * **Compact layout**: reduces the size of the tile to the minimum height to display its icon and name. Since no content is displayed, you will probably need to click on it to access its data.
+    * **Paint card background**: fill in the tile's background with the picked color. The background will be white (or black, if in dark theme) otherwise.
 
 :   !!! faq
         We are aware of users requiring more control over the tiles' appearance, specifically concerning their size. We are working to provide some customization options in these regards.
@@ -67,13 +68,13 @@ The following standard tiles are currently available for you to pick:
 
 - [Buttons](tiles/button.md) - sends a predefined payload upon user's click.
 - [Toggles](tiles/toggle.md) - bistable tile that sends the payload corresponding to the opposite state (i.e. *off when on* and *on when off*).
-- [Multi-selections](tiles/multi-selection.md)
-- [Text](tiles/text.md)
-- [Progress](tiles/progress.md)
-- [Date and time](tiles/date-time.md)
+- [Multi-selections](tiles/multi-selection.md) - offers the user a list of messages to pick from.
+- [Text](tiles/text.md) - displays incoming text and sends user-input strings.
+- [Progress](tiles/progress.md) - a progress bar showing the parsed incoming message in a predefined range.
+- [Date and time](tiles/date-time.md) - shows a date - or time - picker.
 - [Line chart](tiles/line-chart.md)
-- [Color](tiles/color.md)
-- [Image](tiles/image.md)
+- [Color](tiles/color.md) - displays a color picker for the user to choose from.
+- [Image](tiles/image.md) - downloads and displays an image from the URL passed as payload.
 
 ## Compound tiles
 Compound tiles are more complex entity that aim to represent a physical device, allowing the user to manage different parameters at the same time and within the same interface. These tiles come with a predefined combination of state/command topics, but you have the possibility to override the settings and customize the behavior if you want to.
