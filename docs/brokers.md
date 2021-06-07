@@ -59,7 +59,7 @@ The app offers you the following options to set up a connection with your broker
 
 - **Broker protection**: specify username & password if the broker requires authentication.
 
-- **SSL connection**: enable this option to use secured SSL/TLS connection; please remember to use the correct port number as well as to switch to `ssl://` or `wss://`. Read the [dedicated page](tls_encryption.md) to learn more.
+- **SSL connection**: enable this option to use secured SSL/TLS connection; please remember to use the correct port number as well as to switch to `ssl://` or `wss://`. Read the [dedicated page](tls-encryption.md) to learn more.
 
     - **Accept self-signed certificates**: skips the verification of the broker's certificate (*any* certificate) accepting it by default. This is not a secure way to proceed: better install your CA certificate in the trust chain via the dedicated Android Settings menu, or providing it to the app via the file picker interface. If your certificate has been issued by a trusted CA authority there should be no need to perform any of these actions.
     - **Skip hostname verification**: skips the verification of the server's name against the one provided by the certificate. if a CA certificate is selected via the file picker, this option has no effect.
@@ -93,4 +93,4 @@ Another one is `broker.hivemq.com`, available as plain TCP or WS.
 
 You can find a comprehensive list [here](https://github.com/mqtt/mqtt.org/wiki/public_brokers).
 
-If you want to test an SSL connection (let's say with Amazon AWS), read the [dedicated page](tls_encryption.md).
+If you want to test an SSL connection (let's say with Amazon AWS), read the [dedicated page](tls-encryption.md).

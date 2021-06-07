@@ -27,8 +27,9 @@ nav:
     - 'Light': 'tiles/light.md'
     - 'Thermostat': 'tiles/thermostat.md'
 - Features:
-  - 'Working with JSON Objects': 'working_with_json.md'
+  - 'Working with JSON Objects': 'working-with-json.md'
   - 'Exporting the database over MQTT': 'export-over-mqtt.md'
+  - 'Establishing TLS connection': 'tls-encryption.md'
 - Contributing: 'contributing.md'
 - Changelog: 'changelog.md'
 - Privacy: 'privacy.md'

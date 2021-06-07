@@ -35,7 +35,7 @@ Usually, *standard* tiles expose their most relevant settings via the *new tile*
     * The timestamp must be provided in the form of *milliseconds from epoch* (Unix time, milliseconds since Jan. 01, 1970 UTC).
 
 :   !!! tip
-        You can find all the needed information at [JsonPath Github page](https://github.com/json-path/JsonPath) or at the dedicated [working with JSON objects](working_with_json.md) page.
+        You can find all the needed information at [JsonPath Github page](https://github.com/json-path/JsonPath) or at the dedicated [working with JSON objects](working-with-json.md) page.
 
 - **Customize output**: enables the user to define a custom template for the outgoing message. The outbound value and the current timestamp (millis from epoch) are currently supported to be replaced prior to the message being sent. Placeholders can be inserted either by tapping on the proper buttons at top of the page or by typing in the desired placeholder.  
 Available placeholder are:

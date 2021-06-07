@@ -21,7 +21,7 @@ To establish a secure SSL connection not requiring authentication, follow these 
 That's it. Now try to connect.
 
 ### Example: Flespi
-[Flespi](flespi.io) provides an online MQTT broker free of charges with TLS encryption.
+[Flespi](http://flespi.io) provides an online MQTT broker free of charges with TLS encryption.
 
 To test it out, register and create a new account. Once you have your broker address, create a new broker instance in the app and paste it there.
 

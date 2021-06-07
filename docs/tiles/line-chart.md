@@ -10,7 +10,7 @@ Points will be drawn evenly spaced in the `x` axis. Invalid input arrays won't d
 :   !!! faq
         The app does not allow to draw charts by creating arrays with single incoming values to avoid inconsistences in the displayed data due to unreliable connections with the broker. You are required to construct a valid array (e.g. in NodeRED) prior sending it to the app to be displayed.
 
-The array can obviously be extracted from a JSON payload. See [working with JSON](../working_with_json.md) or [tiles](../tiles.md) for details.
+The array can obviously be extracted from a JSON payload. See [working with JSON](../working-with-json.md) or [tiles](../tiles.md) for details.
 
 ### Examples
 Some examples of valid or invalid messages are here reported:
