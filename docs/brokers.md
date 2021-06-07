@@ -61,8 +61,8 @@ The app offers you the following options to set up a connection with your broker
 
 - **SSL connection**: enable this option to use secured SSL/TLS connection; please remember to use the correct port number as well as to switch to `ssl://` or `wss://`.  
 
-    - If the broker uses a self-signed certificate, you will need to either install the certificate in the trust chain of the device or to enable the *Accept self-signed certificates* option to skip CA certificate verification. If your certificate has been issued by a trusted CA authority there should be no need to perform any of these actions.  
-    - If you provide a CA certificate the value of *Accept self-signed certificates* will be ignored.  
+    - **Accept self-signed certificates**: skips the verification of the broker's certificate (*any* certificate) accepting it by default. This is not a secure way to proceed: better install your CA certificate in the trust chain via the dedicated Android Settings menu, or providing it to the app via the file picker interface. If your certificate has been issued by a trusted CA authority there should be no need to perform any of these actions.
+    - **Skip hostname verification**: skips the verification of the server's name against the one provided by the certificate. if a CA certificate is selected via the file picker, this option has no effect.
     - If the broker requires a Client Certificate, select it via the designated file picker. Again, the need for a Client Cert will be either set by you or clearly communicated by the broker provider, so you should be aware of it; if you are not sure you need to provide a certificate, you probably don't.
 
 :   !!! warning
@@ -75,3 +75,20 @@ The app offers you the following options to set up a connection with your broker
 - **Do not connect at startup**: tells the app not to connect to this broker when launched; you will need to manually start the connection from the overflow menu in the main screen (the three-dots icon). Use this option if the broker is rarely used or is not your main one and you do not want multiple connections in the background.
 
 With that being said, you should now be able to set up your first broker and move on to the next task: setting up tiles!
+
+### Using Websockets
+
+The app automatically switches from TCP to Websocket connections depending on the protocol name you provide as part of the address.  
+Default values are, if not set bey the user: `tcp://` for plain connections, `ssl://` if *Use SSL connection* is checked.
+
+If you wish to establish a websocket connection, provide `ws://` as protocol name (e.g., `ws://test.mosquitto.org` will be the full address). If you instead want an encrypted websocket, use `wss://`.
+
+## Testing connection
+
+If you want to test or play around with different connection settings, there are a few open brokers available.
+
+The most commonly used is `test.mosquitto.org`, providing TCP and WS connections, with/without authentication and with/without encryption. Be aware that this is a publicly available broker, so any message you send will be visible by anybody. Moreover, testing TLS connections is not always feasible, as the server as problems with its CA certificate and Client certificate from time to time.
+
+Another one is `broker.hivemq.com`, available as plain TCP or WS.
+
+You can find a comprehensive list [here](https://github.com/mqtt/mqtt.org/wiki/public_brokers).
