@@ -1,0 +1,1098 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.7">
+    
+    
+      
+        <title>Tiles - MQTT Dashboard</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-98707628-3","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tiles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="MQTT Dashboard" class="md-header__button md-logo" aria-label="MQTT Dashboard" data-md-component="logo">
+      
+  <img src="images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MQTT Dashboard
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tiles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="orange"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Vetru-Apps/mqtt-dashboard-documentation/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="MQTT Dashboard" class="md-nav__button md-logo" aria-label="MQTT Dashboard" data-md-component="logo">
+      
+  <img src="images/icon.png" alt="logo">
+
+    </a>
+    MQTT Dashboard
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Vetru-Apps/mqtt-dashboard-documentation/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        The app
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="brokers.html" class="md-nav__link">
+        Brokers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Tiles
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tiles" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tiles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tiles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="tiles.html" class="md-nav__link md-nav__link--active">
+        Tiles
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tunables-what-are-they" class="md-nav__link">
+    Tunables - what are they
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-tiles" class="md-nav__link">
+    Standard tiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard tiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunables" class="md-nav__link">
+    Tunables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-standard-tiles" class="md-nav__link">
+    Available standard tiles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compound-tiles" class="md-nav__link">
+    Compound tiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Compound tiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings_1" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunables_1" class="md-nav__link">
+    Tunables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-compound-tiles" class="md-nav__link">
+    Available compound tiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Standard
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Standard" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Standard
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/button.html" class="md-nav__link">
+        Button
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/toggle.html" class="md-nav__link">
+        Toggle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/multi-selection.html" class="md-nav__link">
+        Multi-selection
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/text.html" class="md-nav__link">
+        Text
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/progress.html" class="md-nav__link">
+        Progress
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/date-time.html" class="md-nav__link">
+        Date and time
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/color.html" class="md-nav__link">
+        Color
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/image.html" class="md-nav__link">
+        Image
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/line-chart.html" class="md-nav__link">
+        Line chart
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Compound
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Compound" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Compound
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/light.html" class="md-nav__link">
+        Light
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiles/thermostat.html" class="md-nav__link">
+        Thermostat
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="working-with-json.html" class="md-nav__link">
+        Working with JSON Objects
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="export-over-mqtt.html" class="md-nav__link">
+        Exporting the database over MQTT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tls-encryption.html" class="md-nav__link">
+        Establishing TLS connection
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing.html" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="privacy.html" class="md-nav__link">
+        Privacy
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tunables-what-are-they" class="md-nav__link">
+    Tunables - what are they
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-tiles" class="md-nav__link">
+    Standard tiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard tiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunables" class="md-nav__link">
+    Tunables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-standard-tiles" class="md-nav__link">
+    Available standard tiles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compound-tiles" class="md-nav__link">
+    Compound tiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Compound tiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings_1" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunables_1" class="md-nav__link">
+    Tunables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-compound-tiles" class="md-nav__link">
+    Available compound tiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Vetru-Apps/mqtt-dashboard-documentation/edit/master/docs/tiles.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="tiles">Tiles</h1>
+<p>Tiles are in MqttDashboard the core objects that allow users to interact with their MQTT-enabled devices. A <em>tile</em> can be either a representation of a real world device or simply publish and subscribe on specific topics at the user input; in the first case we speak of <em>compound tiles</em>, while the latter are named <em>standard tiles</em>.</p>
+<p>Standard and compound tiles can coexist as part of the same broker and under the same group. The main difference between the two is the ability of the compound ones to group more than one input and output topics under the same interface.<br />
+Hopefully with the following description we will be able to better convey the differences of the two.</p>
+<h3 id="tunables-what-are-they">Tunables - what are they</h3>
+<p>We define here <em>tunables</em> a set of settings impacting the operations of the tile; these could be related to the visual interface, to the tile's topics, or to how the tile will behave in response to input or outputs. Tunables are as such those settings strictly related to one particular type of tile; standard settings common to all tiles are simply names <em>settings</em>.</p>
+<p>You can use tunables to tweak and modify how a tile will look or work, limitedly to the options provided.</p>
+<p>Usually, <em>standard</em> tiles expose their most relevant settings via the <em>new tile</em> screen, so you won't have to look for them. On the contrary, <em>compound tiles</em> work with a predefined set of rules inferred from the <em>base topic</em> you provide during setup; in this case, use the tunables to customize them.</p>
+<h2 id="standard-tiles">Standard tiles</h2>
+<dl>
+<dd>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+This section of the documentation could be enhanced. Want to help out? Head over to the <a href="contributing.html">contributions</a> page.</div>
+</dd>
+</dl>
+<h3 id="settings">Settings</h3>
+<ul>
+<li><strong>Name</strong>: Defines the name of the tile that will be displayed on the home screen. Can be left blank.</li>
+<li><strong>Subscribe topic</strong> (required): The topic to which the tile will subscribe and receive messages from. The wildcard described in the <a href="brokers.html">brokers</a> page can be clearly used.</li>
+<li><strong>Publish topic</strong> (required): the topic on which the tile will publish the payload.</li>
+</ul>
+<dl>
+<dd>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+Subscribe or publish topic could not be available to certain tiles - output tiles (ex. Button) can only send messages, input tiles (ex. Chart) can only receive messages. Moreover be aware that tiles <strong>won't be updated</strong> if no message has been received; so if you plan to use different sub/pub topics the tile status could remain unmodified even though the message has been correctly sent.</div>
+</dd>
+</dl>
+<ul>
+<li>
+<p><strong>Payload is JSON</strong>: if enabled, the payload will be treated as JSON and parsed accordingly. You can specify both payload and timestamp paths.</p>
+<ul>
+<li>If it was not possible to parse the payload, the whole message will be considered as
+payload.</li>
+<li>If it was not possible to parse the timestamp, the current time will be used instead.</li>
+<li>The timestamp must be provided in the form of <em>milliseconds from epoch</em> (Unix time, milliseconds since Jan. 01, 1970 UTC).</li>
+</ul>
+</li>
+</ul>
+<dl>
+<dd>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+You can find all the needed information at <a href="https://github.com/json-path/JsonPath">JsonPath Github page</a> or at the dedicated <a href="working-with-json.html">working with JSON objects</a> page.</div>
+</dd>
+</dl>
+<ul>
+<li><strong>Customize output</strong>: enables the user to define a custom template for the outgoing message. The outbound value and the current timestamp (millis from epoch) are currently supported to be replaced prior to the message being sent. Placeholders can be inserted either by tapping on the proper buttons at top of the page or by typing in the desired placeholder.<br />
+Available placeholder are:<ul>
+<li><code>&lt;&lt;value&gt;&gt;</code> for the tile value.</li>
+<li><code>&lt;&lt;timestamp&gt;&gt;</code> for the current time in milliseconds from epoch.</li>
+</ul>
+</li>
+</ul>
+<dl>
+<dd>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+This is the place to define a custom JSON message if your application needs a JSON-formatted payload.</div>
+</dd>
+</dl>
+<ul>
+<li><strong>QoS</strong>: selects the quality of service used when sending the message. Defaults to <code>0</code>.</li>
+<li><strong>Retain message</strong>: sets the <code>retain message</code> flag to let the broker know to keep the message available to future subscribers. Only works if the broker is set to have persistance.</li>
+</ul>
+<dl>
+<dd>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+To delete a persistent (<em>retained</em>) message, send an empty payload to its topic.</div>
+</dd>
+</dl>
+<ul>
+<li>
+<p><strong>UI settings</strong>:</p>
+<ul>
+<li><strong>Show as shortcut</strong>: display the tile as a small, icon-only shortcut at the top of the screen for faster access. </li>
+<li><strong>Compact layout</strong>: reduces the size of the tile to the minimum height to display its icon and name. Since no content is displayed, you will probably need to click on it to access its data.</li>
+<li><strong>Paint card background</strong>: fill in the tile's background with the picked color. The background will be white (or black, if in dark theme) otherwise.</li>
+</ul>
+</li>
+</ul>
+<dl>
+<dd>
+<div class="admonition faq">
+<p class="admonition-title">Faq</p>
+We are aware of users requiring more control over the tiles' appearance, specifically concerning their size. We are working to provide some customization options in these regards.</div>
+</dd>
+</dl>
+<h3 id="tunables">Tunables</h3>
+<p>There are no default tunables for standard tiles. Each tile type might expose custom tunables to customize its appearance or operations; check out the tile's documentation page to find out more!</p>
+<h3 id="available-standard-tiles">Available standard tiles</h3>
+<p>The following standard tiles are currently available for you to pick:</p>
+<ul>
+<li><a href="tiles/button.html">Buttons</a> - sends a predefined payload upon user's click.</li>
+<li><a href="tiles/toggle.html">Toggles</a> - bistable tile that sends the payload corresponding to the opposite state (i.e. <em>off when on</em> and <em>on when off</em>).</li>
+<li><a href="tiles/multi-selection.html">Multi-selections</a> - offers the user a list of messages to pick from.</li>
+<li><a href="tiles/text.html">Text</a> - displays incoming text and sends user-input strings.</li>
+<li><a href="tiles/progress.html">Progress</a> - a progress bar showing the parsed incoming message in a predefined range.</li>
+<li><a href="tiles/date-time.html">Date and time</a> - shows a date - or time - picker.</li>
+<li><a href="tiles/line-chart.html">Line chart</a></li>
+<li><a href="tiles/color.html">Color</a> - displays a color picker for the user to choose from.</li>
+<li><a href="tiles/image.html">Image</a> - downloads and displays an image from the URL passed as payload.</li>
+</ul>
+<h2 id="compound-tiles">Compound tiles</h2>
+<p>Compound tiles are more complex entity that aim to represent a physical device, allowing the user to manage different parameters at the same time and within the same interface. These tiles come with a predefined combination of state/command topics, but you have the possibility to override the settings and customize the behavior if you want to.</p>
+<p>Compound tiles group two or more <em>parameters</em> under the same UI control. As an example, a <a href="tiles/thermostat.html">thermostat</a> tile provides <code>termperature</code>, <code>mode</code>, <code>setpoint</code> and <code>humidity</code> as parameters.<br />
+Parameters can be either <code>state</code> parameters, only providing input, <code>command</code> parameters providing an output, or both.  </p>
+<p>For each parameter type, MqttDashboard generates a set of topics constructed on the <code>base topic</code> specified by the user, which are:</p>
+<ul>
+<li><code>&lt;base topic&gt;/&lt;parameter name&gt;/state</code> for <code>state</code> or input parameters</li>
+<li><code>&lt;base topic&gt;/&lt;parameter name&gt;/command</code> for <code>command</code> or output parameters</li>
+</ul>
+<p>Parameters with both <code>state</code> and <code>output</code> capabilities will generate two topics each.<br />
+The <code>state</code> topic is used by the app to receive messages, thus is subscribed to; the <code>command</code> topic is the one used to publish the parameter upon user interaction.</p>
+<p>Let us first give a list of the properties common to every compound tile. Hang tight, an example will make things clear later on!</p>
+<h3 id="settings_1">Settings</h3>
+<ul>
+<li><strong>Name</strong> (required): user friendly name, the same as in standard tiles.</li>
+<li><strong>Topic</strong> (required): the <em>base topic</em> upon which the tile will build all <code>state</code> and <code>command</code> topics. See <em>Tunables</em> or the following example for more info.</li>
+<li><strong>QoS</strong>, <strong>Retain</strong> and <strong>UI settings</strong> as described above.</li>
+</ul>
+<h3 id="tunables_1">Tunables</h3>
+<p>Compound tiles come with a common set of tunables related to the parameters they act on. Use the tunables to customize <code>state</code> or <code>command</code> topics or the way the tile works.</p>
+<p>Each compound tile type might have additional tunables than the ones described here, specifically for its operations. Check out the tile-related page to find out more!</p>
+<ul>
+<li>
+<p>For each <code>state</code> parameter, the available tunables are:</p>
+<ul>
+<li><code>&lt;parameter&gt;_state_topic</code>: the state - or input - topic of that parameter. If empty, the default one will be used.</li>
+<li><code>&lt;parameter&gt;_json_path</code>: the JsonPath string used to extract the payload from the incoming message. If the path is empty, the message is not a JSON Object or if the specified path is not found, the whole message will be interpreted as payload.</li>
+</ul>
+</li>
+<li>
+<p>For each <code>command</code> parameter, the available tunables are:</p>
+<ul>
+<li><code>&lt;parameter&gt;_command_topic</code>: the command - or output - topic for the specified parameter. if empty, the default one will be used.</li>
+<li><code>&lt;parameter&gt;_retain</code>: option to flag the outgoing message as retained. Defaults to <code>false</code>.</li>
+</ul>
+</li>
+<li>
+<p>In addition, for for parameters that provide both <code>state</code> and <code>command</code> capabilities, the following tunable is available:</p>
+<ul>
+<li><code>&lt;parameter&gt;_update_locally</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="available-compound-tiles">Available compound tiles</h3>
+<p>The following compound tiles are currently available for you to pick:</p>
+<ul>
+<li><a href="tiles/light.html">Light</a></li>
+<li><a href="tiles/thermostat.html">Thermostat</a></li>
+</ul>
+<h3 id="example">Example</h3>
+<p>Let's consider a <a href="tiles/thermostat.html">thermostat</a> compound tile, and suppose we set <code>home/thermostat</code> as the <em>base topic</em>. Thermostats expose to the user four parameters, namely:</p>
+<ul>
+<li><strong>Setpoint</strong>: available as <code>state</code> and <code>command</code> topic. </li>
+<li><strong>Temperature</strong>: available as <code>state</code> topic.</li>
+<li><strong>Humidity</strong>: available as <code>state</code> topic.</li>
+<li><strong>Mode</strong>: available as <code>state</code> and <code>command</code> topic.</li>
+</ul>
+<p>MqttDashboard will therefore generate <code>state</code> and <code>command</code> topics for each parameter following the previously described rule:</p>
+<ul>
+<li><code>state</code>, or input, topics, to which it will subscribe:<ul>
+<li><code>home/thermostat/setpoint/state</code></li>
+<li><code>home/thermostat/temperature/state</code></li>
+<li><code>home/thermostat/humidity/state</code></li>
+<li><code>home/thermostat/mode/state</code></li>
+</ul>
+</li>
+<li><code>command</code>, or output, topics, to which messages will be published:<ul>
+<li><code>home/thermostat/setpoint/command</code></li>
+<li><code>home/thermostat/mode/command</code></li>
+</ul>
+</li>
+</ul>
+<p>Upon user interaction, a message will be published to the respective <code>command</code> topic. Let's say the user changed the thermostat's setpoint from <code>20</code> to <code>22</code>: a message with <code>22</code> as payload will be sent to <code>home/thermostat/setpoint/command</code>.</p>
+<p>Let's now suppose the user changed the setpoint <code>command</code> topic to <code>home/garage/furnace</code> by acting on the tile's tunables. The tile still expects inputs from <code>home/thermostat/setpoint/state</code> to update its UI, while publishes to <code>home/garage/furnace</code>, thus no visual update is given when the user changes the setpoint.  </p>
+<p>Since <code>setpoint</code> provides both <code>state</code> and <code>command</code> capabilities, the tile also exposes a tunable responsible for immediately updating the value on the state topic. When enabled, the app publishes on <code>home/garage/furnace</code> and locally sets the value of <code>home/thermostat/setpoint/state</code> to the outgoing value; in this way, the UI stays up-to-date and the user maintains separate input/output topics.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="brokers.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Brokers" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Brokers
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="tiles/button.html" class="md-footer__link md-footer__link--next" aria-label="Next: Button" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Button
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://www.reddit.com/r/MqttDashboard/" target="_blank" rel="noopener" title="www.reddit.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>
